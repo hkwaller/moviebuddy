@@ -30,24 +30,22 @@
         <h1 class="title">Moviebuddy</h1>
       </ion-header-bar>
       <ion-content>
-          <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
         </ion-refresher>
         <div class="item item-divider" ng-show="stations.length > 0">
             Movies
         </div>
         <ion-list>
-            <ion-item ng-repeat="movie in movies">
-                <div class="row">
-                    <div class="col col-20">
-                        <img src="{{movie.poster}}" class="poster">
+            <div class="item item-divider">
+             Movies
+            </div>
+            <ion-item ng-repeat="movie in movies" class="item item-thumbnail-left">
+                    <img ng-src="{{movie.poster}}" class="poster margin-left">
+                    <div class="margin-top">
+                        <h2>{{ movie.title }}</h2>
+                        <p>{{ movie.director }}</p>
                     </div>
-                    <div class="col col-60">
-                        {{ movie.title }}
-                    </div>
-                    <div class="col col-20">
-                        {{ movie.rating }}
-                    </div>
-                </div>
+                    <span class="badge badge-assertive custom-badge"> {{ movie.rating }}</span>
             </ion-item>
         </ion-list>
       </ion-content>
