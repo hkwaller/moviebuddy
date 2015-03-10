@@ -1,8 +1,10 @@
 var express =               require('express'),
     app =                   express(),
-    movieController =    require('./server/controllers/movie-controller.js'),
     bodyParser =            require('body-parser'),
-    mongoose =              require('mongoose')
+    mongoose =              require('mongoose'),
+    websocket =             require('./server/websockets.js'),
+    movieController =       require('./server/controllers/movie-controller.js')
+
 
 mongoose.connect('mongodb://localhost:27017/movies')
 
@@ -15,6 +17,7 @@ app.post('/api/add', movieController.create)
 app.get('/api/movies', movieController.list)
 app.delete('/api/products', movieController.delete)
 
-app.listen(3000, function() {
+var server = app.listen(3000, function() {
     console.log('Im alive..')
+    websocket.connect(server)
 })

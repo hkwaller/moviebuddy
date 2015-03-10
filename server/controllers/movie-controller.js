@@ -1,17 +1,18 @@
 var Movie = require('../models/movie')
+var websockets = require('../websockets')
 
 module.exports.create = function(req, res) {
     var movie = new Movie({
-        "title":"Chappie",
-        "director":"Neil Blomkamp",
-        "rating":"7.4",
-        "poster":"http://ia.media-imdb.com/images/M/MV5BMTUyNTI4NTIwNl5BMl5BanBnXkFtZTgwMjQ4MTI0NDE@._V1_SX214_AL_.jpg",
+        "title":"Kick-Ass",
+        "director":"Matthew Vaughn",
+        "rating":"7.7",
+        "poster":"http://ia.media-imdb.com/images/M/MV5BMTMzNzEzMDYxM15BMl5BanBnXkFtZTcwMTc0NTMxMw@@._V1_SX214_AL_.jpg",
         "date":Date.now()
     });
     
     movie.save(function(err, result) {
         if (err) return err;
-        
+        websockets.broadcast('new_post', result)
         res.status(201).json(result);
     });
 }

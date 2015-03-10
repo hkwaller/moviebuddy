@@ -22,6 +22,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/websockets.js"></script>
   </head>
   <body ng-app="moviebuddy" ng-controller="MainCtrl">
 
@@ -43,7 +44,7 @@
                     <img ng-src="{{movie.poster}}" class="poster margin-left">
                     <div class="margin-top">
                         <h2>{{ movie.title }}</h2>
-                        <p>{{ movie.director }}</p>
+                        <p>av {{ movie.director }}</p>
                     </div>
                     <span class="badge badge-assertive custom-badge"> {{ movie.rating }}</span>
             </ion-item>
