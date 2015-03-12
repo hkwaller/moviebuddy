@@ -13,9 +13,9 @@ app.use('/', express.static(__dirname + '/webapp/www'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post('/api/add', movieController.create)
+app.post('/api/movies', movieController.create)
 app.get('/api/movies', movieController.list)
-app.delete('/api/products', movieController.delete)
+app.delete('/api/movies', movieController.delete)
 
 var server = app.listen(3000, function() {
     console.log('Im alive..')
