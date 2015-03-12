@@ -1,6 +1,14 @@
-app.controller('MainCtrl', function($scope, $resource, toaster) {
+app.controller('MainCtrl', function($scope, $resource, $http, $window, toaster) {
     
     var Movie = $resource('http://localhost:3000/api/movies');
+    
+    $http.post('/authenticate', {username: "hannes", password: "password"})
+      .success(function (data, status, headers, config) {
+        $window.sessionStorage.token = data.token;
+      })
+      .error(function (data, status, headers, config) {
+        delete $window.sessionStorage.token;
+      });
     
     function getMovies() {
          Movie.query(function(results) {
@@ -51,8 +59,7 @@ app.controller('MainCtrl', function($scope, $resource, toaster) {
         movie.director = "test";
         movie.rating = "9.5";
         movie.date = new Date();
-        movie.poster = "http://www.impawards.com/2003/posters/identity_xlg.jpg";
-        
+        movie.poster = "http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2011/12/mission-impossible-ghost-protocol-movie-poster.jpg";
         movie.$save();
     }
     
