@@ -3,9 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <title>Moviebuddy</title>
+      
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">      
+    <link href="css/toaster.css" rel="stylesheet">      
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
@@ -15,6 +17,8 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="https://code.angularjs.org/1.3.9/angular-resource.min.js"></script>
+    <script src="http://code.angularjs.org/1.3.9/angular-animate.min.js" ></script>
+    <script src="lib/toaster.js" ></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -29,10 +33,14 @@
     <ion-pane>
       <ion-header-bar class="bar-positive">
         <h1 class="title">Moviebuddy</h1>
+        <button class="button button-clear" ng-click="add()">+</button>
+
       </ion-header-bar>
-      <ion-content>
+      <ion-content class="background">
         <ion-refresher pulling-text="Pull to refresh..." on-refresh="refresh()">
         </ion-refresher>
+        <toaster-container toaster-options="{'time-out': 3000, 'close-button':false, 'animation-class': 'toast-top-center'}"></toaster-container>
+
         <div class="item item-divider" ng-show="stations.length > 0">
             Movies
         </div>
@@ -40,13 +48,16 @@
             <div class="item item-divider">
              Movies
             </div>
-            <ion-item ng-repeat="movie in movies" class="item item-thumbnail-left">
+            <ion-item ng-repeat="movie in movies | orderBy:'-rating'" class="item item-thumbnail-left">
                     <img ng-src="{{movie.poster}}" class="poster margin-left">
                     <div class="margin-top">
                         <h2>{{ movie.title }}</h2>
                         <p>av {{ movie.director }}</p>
                     </div>
-                    <span class="badge badge-assertive custom-badge"> {{ movie.rating }}</span>
+                    <span class="badge custom-badge" ng-class="{ 'badge-assertive': movie.rating < 7, 'badge-balanced': movie.rating >= 8, 'badge-energized': movie.rating < 8 && movie.rating >= 7 }"> {{ movie.rating }}</span>
+                <ion-option-button class="button-assertive" ng-click="delete(movie, $index)">
+                Ta bort
+              </ion-option-button>
             </ion-item>
         </ion-list>
       </ion-content>
