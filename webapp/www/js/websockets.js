@@ -9,13 +9,13 @@ app.run(function($rootScope, $timeout) {
         }
         
         connection.onmessage = function(e) {
-            console.log(e)
             var payload = JSON.parse(e.data);
             $rootScope.$broadcast('ws:' + payload.topic, payload.data);
         }
-    }    
-    
-    connection.onopen = function() {
-        console.log('WebSocket connected..');
-    }
+
+        connection.onopen = function() {
+            console.log('WebSocket connected..');
+        }
+        
+    })()    
 })
