@@ -74,6 +74,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 addMovie(jsonResult!)
             case "delete_movie":
                 deleteMovie(jsonResult!)
+            case "new client connected..":
+                println("someone connected..")
             default:
                 println("Unrecognised broadcast from socket")
             }

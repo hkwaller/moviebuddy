@@ -36,7 +36,7 @@ app.controller('MainCtrl', function($scope, $resource, $http, $window, $ionicMod
             angular.forEach($scope.movies, function(val, key) {
                 if (val._id === movie._id) {
                     $scope.movies.splice($scope.movies.indexOf(val), 1);
-                    toaster.pop({type: 'error', title: "Ta bort", body:"Film " + movie.title + " er tatt bort"});
+                    toaster.pop({type: 'error', title: "Slettet film", body:"Film " + movie.title + " er slettet"});
                     return;
                 }
             })
