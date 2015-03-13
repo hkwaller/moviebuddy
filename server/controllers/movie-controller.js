@@ -26,12 +26,3 @@ module.exports.delete = function(req, res) {
         });
     });
 };
-
-/*
-"title":"Kingsman",
-        "director":"Matthew Vaughn",
-        "rating":"8.2",
-        "poster":"http://ia.media-imdb.com/images/M/MV5BMTkxMjgwMDM4Ml5BMl5BanBnXkFtZTgwMTk3NTIwNDE@._V1_SY317_CR0,0,214,317_AL_.jpg",
-        "date":Date.now()
-
-*/
