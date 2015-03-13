@@ -8,9 +8,31 @@
 
 import UIKit
 
+
+extension UIColor {
+    
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     var movies = [Movie]()
+    var token: NSString {
+        get {
+            var returnValue: NSString? = NSUserDefaults.standardUserDefaults().objectForKey("token") as? NSString
+            if returnValue == nil {
+                returnValue = ""
+            }
+            return returnValue!
+        }
+        
+        set(newValue) {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "token")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,23 +43,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var tblView = UIView(frame: CGRectZero)
         tableView.tableFooterView = tblView
         tableView.tableFooterView?.hidden = true
-        tableView.backgroundColor = UIColor.grayColor()
+        tableView.backgroundColor = UIColor(r: 208, g: 204, b: 204)
         
-
-
+        tableView.sectionHeaderHeight = 35
+        tableView.sectionIndexBackgroundColor = UIColor(r: 245, g: 245, b: 245)
+        tableView.sectionIndexColor = UIColor.whiteColor()
     }
     
     override func viewWillAppear(animated: Bool) {
-        fetchMenu({ (callback) -> () in
+        authenticate { (callback) -> () in
+            self.token = callback as NSString
+        }
+
+        fetchMovies({ (callback) -> () in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.movies = callback
                 self.tableView.reloadData()
             })
-        })
+        }, token)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count;
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+        var label : UILabel = UILabel()
+        label.text = "Movies"
+        label.backgroundColor = UIColor(r: 245, g: 245, b: 245)
+        
+        return label
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -64,44 +107,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func fetchMenu(completionHandler: (callback: [Movie]) -> ()) {
-        
-        var movies = [Movie]()
-        
-        let urlPath = "http://localhost:3000/api/movies/"
-        let url = NSURL(string: urlPath)
-        let session = NSURLSession.sharedSession()
-        println("fetching..")
-        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            
-            if (error != nil) {
-                completionHandler(callback: movies)
-                println(error)
-            } else {
-                
-                let jsonResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
-                println(jsonResult)
-                if let dict = jsonResult as? NSArray {
-                    for movie : AnyObject in dict {
-                        if let movieInfo = movie as? Dictionary<String, AnyObject> {
-                            if let title = movieInfo["title"] as AnyObject? as! String? {
-                                if let director = movieInfo["director"] as AnyObject? as! String? {
-                                    if let rating = movieInfo["rating"] as AnyObject? as! String? {
-                                        if let poster = movieInfo["poster"] as AnyObject? as! String? {
-                                            movies.append(Movie(title: title, director: director, rating: rating, poster: poster))
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                movies.sort({$0.rating > $1.rating})
-                completionHandler(callback: movies)
-            }
-        })
-        task.resume()
-    }
-
+    
 }
 
