@@ -116,7 +116,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="U6h-11-kL1" secondAttribute="trailing" constant="-16" id="ClQ-ta-Ohz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="U6h-11-kL1" secondAttribute="bottom" id="beJ-lz-gB0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="U6h-11-kL1" secondAttribute="bottom" id="Xuf-zG-zFf"/>
                             <constraint firstItem="U6h-11-kL1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="pWJ-DR-B1e"/>
                             <constraint firstItem="U6h-11-kL1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="yXJ-vi-z7q"/>
                         </constraints>
@@ -124,6 +124,7 @@
                     <navigationItem key="navigationItem" title="Moviebuddy" id="z44-ka-SAv"/>
                     <connections>
                         <outlet property="tableView" destination="U6h-11-kL1" id="CTX-hU-IuT"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="X30-fN-7dp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

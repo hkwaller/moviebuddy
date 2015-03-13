@@ -11,6 +11,7 @@ import Starscream
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebSocketDelegate {
     @IBOutlet weak var tableView: UITableView!
+
     var movies = [Movie]()
     var socket = WebSocket(url: NSURL(scheme: "ws", host: "localhost:3000", path: "/")!)
 
@@ -67,7 +68,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let data: NSData = text.dataUsingEncoding(NSUTF8StringEncoding)!
         
         let jsonResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil)
-        
         if let topicData = jsonResult!["topic"] as? String {
             switch topicData {
             case "new_movie":
@@ -86,10 +86,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if let director = jsonData["director"] as? String {
                     if let rating = jsonData["rating"] as? String {
                         if let poster = jsonData["poster"] as? String {
-                            println(jsonData)
                             if let id = jsonData["_id"] as? String {
                                 movies.append(Movie(title: title, director: director, rating: rating, poster: poster, id: id))
                                 movies.sort({$0.rating > $1.rating})
+                                self.view.makeToast(message: "\(title) ble lagt til", duration: 2.0, position: HRToastPositionTop, title: "Ny film")
                                 tableView.reloadData()
                             }
                         }
@@ -104,6 +104,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             for (index, movie) in enumerate(movies) {
                 if movie.id == jsonData["_id"] as? String {
                     movies.removeAtIndex(index)
+                    self.view.makeToast(message: "\(movie.title) ble tatt bort", duration: 2.0, position: HRToastPositionTop, title: "Slettet film")
                     tableView.reloadData()
                 }
             }

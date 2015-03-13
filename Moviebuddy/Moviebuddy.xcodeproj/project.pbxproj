@@ -20,6 +20,7 @@
 		3157EE8D1AB2E3330025A7E2 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3157EE861AB2E3280025A7E2 /* Starscream.framework */; };
 		3157EE8F1AB2E3430025A7E2 /* Starscream.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3157EE861AB2E3280025A7E2 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3157EE911AB302750025A7E2 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157EE901AB302750025A7E2 /* UIColor+Extension.swift */; };
+		3157EE931AB30A090025A7E2 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157EE921AB30A090025A7E2 /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		3157EE641AB2E16D0025A7E2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3157EE7E1AB2E3280025A7E2 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = "../../../../../Downloads/Starscream-master/Starscream.xcodeproj"; sourceTree = "<group>"; };
 		3157EE901AB302750025A7E2 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		3157EE921AB30A090025A7E2 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				3157EE7E1AB2E3280025A7E2 /* Starscream.xcodeproj */,
 				3157EE641AB2E16D0025A7E2 /* SwiftyJSON.swift */,
+				3157EE921AB30A090025A7E2 /* Toast.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3157EE911AB302750025A7E2 /* UIColor+Extension.swift in Sources */,
+				3157EE931AB30A090025A7E2 /* Toast.swift in Sources */,
 				3115AF001AB2C8F7005441C7 /* RestClient.swift in Sources */,
 				313D1BA61AAE3F1400D564D1 /* ViewController.swift in Sources */,
 				311E3E001AB241B800E449E1 /* MovieCell.swift in Sources */,
