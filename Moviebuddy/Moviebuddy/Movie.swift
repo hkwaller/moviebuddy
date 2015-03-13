@@ -13,12 +13,14 @@ class Movie {
     var director: String
     var rating: String
     var poster: String
+    var id: String
     
-    init(title: String, director: String, rating: String, poster: String) {
+    init(title: String, director: String, rating: String, poster: String, id: String) {
         self.title = title
-        self.director = director
+        self.director = "av \(director)"
         self.rating = rating
         self.poster = poster
+        self.id = id
     }
     
 }

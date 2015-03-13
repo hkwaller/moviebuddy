@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8xf-6S-jFG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8xf-6S-jFG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +23,7 @@
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" rowHeight="100" id="AQc-aX-Fr9" customClass="MovieCell" customModule="Moviebuddy" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" rowHeight="100" id="AQc-aX-Fr9" customClass="MovieCell" customModule="Moviebuddy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AQc-aX-Fr9" id="hPb-GH-TfJ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -58,22 +58,22 @@
                                                     <rect key="frame" x="88" y="24" width="401" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Director" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f3-ZT-3iq">
-                                                            <rect key="frame" x="16" y="29" width="377" height="21"/>
+                                                            <rect key="frame" x="16" y="29" width="377" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Imma title for a movie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hp1-JY-Yxr">
-                                                            <rect key="frame" x="16" y="8" width="385" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hp1-JY-Yxr">
+                                                            <rect key="frame" x="16" y="5" width="385" height="21"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="2f3-ZT-3iq" firstAttribute="top" secondItem="hp1-JY-Yxr" secondAttribute="bottom" id="O6x-PL-TOJ"/>
-                                                        <constraint firstItem="hp1-JY-Yxr" firstAttribute="top" secondItem="5vm-SG-1Pq" secondAttribute="top" constant="8" id="Yw4-gL-9a5"/>
+                                                        <constraint firstItem="2f3-ZT-3iq" firstAttribute="top" secondItem="hp1-JY-Yxr" secondAttribute="bottom" constant="3" id="O6x-PL-TOJ"/>
+                                                        <constraint firstItem="hp1-JY-Yxr" firstAttribute="top" secondItem="5vm-SG-1Pq" secondAttribute="top" constant="5" id="Yw4-gL-9a5"/>
                                                         <constraint firstAttribute="height" constant="50" id="Zyk-H6-MmM"/>
                                                         <constraint firstItem="2f3-ZT-3iq" firstAttribute="leading" secondItem="5vm-SG-1Pq" secondAttribute="leading" constant="16" id="cAj-d6-E01"/>
                                                         <constraint firstAttribute="trailing" secondItem="2f3-ZT-3iq" secondAttribute="trailing" constant="8" id="fA7-wo-O1D"/>

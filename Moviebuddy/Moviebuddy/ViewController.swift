@@ -7,17 +7,13 @@
 //
 
 import UIKit
+import Starscream
 
-extension UIColor {
-    
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
-        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
-    }
-}
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WebSocketDelegate {
     @IBOutlet weak var tableView: UITableView!
     var movies = [Movie]()
+    var socket = WebSocket(url: NSURL(scheme: "ws", host: "localhost:3000", path: "/")!)
+
     var token: NSString {
         get {
             var returnValue: NSString? = NSUserDefaults.standardUserDefaults().objectForKey("token") as? NSString
@@ -36,6 +32,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        
+        socket.delegate = self
+        socket.connect()
 
     }
     
@@ -52,6 +51,69 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }, token)
     }
     
+    // MARK: Websocket Delegate Methods.
+    
+    func websocketDidConnect(ws: WebSocket) {
+        println("Websocket is connected")
+    }
+    
+    func websocketDidDisconnect(ws: WebSocket, error: NSError?) {
+        if let e = error {
+            println("websocket is disconnected: \(e.localizedDescription)")
+        }
+    }
+    
+    func websocketDidReceiveMessage(ws: WebSocket, text: String) {
+        let data: NSData = text.dataUsingEncoding(NSUTF8StringEncoding)!
+        
+        let jsonResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: nil)
+        
+        if let topicData = jsonResult!["topic"] as? String {
+            switch topicData {
+            case "new_movie":
+                addMovie(jsonResult!)
+            case "delete_movie":
+                deleteMovie(jsonResult!)
+            default:
+                println("Unrecognised broadcast from socket")
+            }
+        }
+    }
+    
+    func addMovie(jsonResult: AnyObject) {
+        if let jsonData = jsonResult["data"] as? Dictionary<String, AnyObject> {
+            if let title = jsonData["title"] as? String {
+                if let director = jsonData["director"] as? String {
+                    if let rating = jsonData["rating"] as? String {
+                        if let poster = jsonData["poster"] as? String {
+                            println(jsonData)
+                            if let id = jsonData["_id"] as? String {
+                                movies.append(Movie(title: title, director: director, rating: rating, poster: poster, id: id))
+                                movies.sort({$0.rating > $1.rating})
+                                tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteMovie(jsonResult: AnyObject) {
+        if let jsonData = jsonResult["data"] as? Dictionary<String, AnyObject> {
+            for (index, movie) in enumerate(movies) {
+                if movie.id == jsonData["_id"] as? String {
+                    movies.removeAtIndex(index)
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func websocketDidReceiveData(ws: WebSocket, data: NSData) {
+        // not needed here but required by delegate
+    }
+    
     func setupTableView() {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
@@ -61,7 +123,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView?.hidden = true
         tableView.backgroundColor = UIColor(r: 208, g: 204, b: 204)
         
-        tableView.sectionHeaderHeight = 35
+        tableView.sectionHeaderHeight = 40
         tableView.sectionIndexBackgroundColor = UIColor(r: 245, g: 245, b: 245)
         tableView.sectionIndexColor = UIColor.whiteColor()
     }
@@ -80,7 +142,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
         var label : UILabel = UILabel()
-        label.text = "\tMovies"
+        label.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        label.text = "\tFilmer"
+        
         label.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         
         return label
@@ -90,17 +154,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell:MovieCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as MovieCell
         
         cell.director.text = self.movies[indexPath.row].director
+        cell.director.textColor = UIColor.directorGrey()
+        
         cell.title.text = self.movies[indexPath.row].title
+        cell.title.textColor = UIColor.titleBlack()
+        
         cell.rating.text = self.movies[indexPath.row].rating
         
         var double = (cell.rating.text! as NSString).doubleValue
         
         if double < 7.0 {
-            cell.ratingView.backgroundColor = UIColor.redColor()
+            cell.ratingView.backgroundColor = UIColor.ratingRed()
         } else if double >= 7.0 && double < 8.0 {
-            cell.ratingView.backgroundColor = UIColor.orangeColor()
+            cell.ratingView.backgroundColor = UIColor.ratingOrange()
         } else {
-            cell.ratingView.backgroundColor = UIColor.greenColor()
+            cell.ratingView.backgroundColor = UIColor.ratingGreen()
         }
         
         let url = NSURL(string: self.movies[indexPath.row].poster)
@@ -110,6 +178,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        return
+    }
     
 }
 

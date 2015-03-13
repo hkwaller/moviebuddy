@@ -71,7 +71,10 @@ func fetchMovies(completionHandler: (callback: [Movie]) -> (), token: NSString) 
                             if let director = movieInfo["director"] as AnyObject? as String? {
                                 if let rating = movieInfo["rating"] as AnyObject? as String? {
                                     if let poster = movieInfo["poster"] as AnyObject? as String? {
-                                        movies.append(Movie(title: title, director: director, rating: rating, poster: poster))
+                                        println(movieInfo)
+                                        if let id = movieInfo["_id"] as AnyObject? as String? {
+                                            movies.append(Movie(title: title, director: director, rating: rating, poster: poster, id: id))
+                                        }
                                     }
                                 }
                             }
