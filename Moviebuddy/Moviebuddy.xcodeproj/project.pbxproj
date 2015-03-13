@@ -16,7 +16,7 @@
 		313D1BAB1AAE3F1400D564D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 313D1BAA1AAE3F1400D564D1 /* Images.xcassets */; };
 		313D1BAE1AAE3F1400D564D1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313D1BAC1AAE3F1400D564D1 /* LaunchScreen.xib */; };
 		313D1BBA1AAE3F1400D564D1 /* MoviebuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D1BB91AAE3F1400D564D1 /* MoviebuddyTests.swift */; };
-		31E933611AAE401E00709FDF /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E933601AAE401E00709FDF /* SwiftyJSON.swift */; };
+		3157EE651AB2E16D0025A7E2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3157EE641AB2E16D0025A7E2 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		313D1BB31AAE3F1400D564D1 /* MoviebuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviebuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		313D1BB81AAE3F1400D564D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		313D1BB91AAE3F1400D564D1 /* MoviebuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviebuddyTests.swift; sourceTree = "<group>"; };
-		31E933601AAE401E00709FDF /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		3157EE641AB2E16D0025A7E2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 		3115AF011AB2CC11005441C7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				31E933601AAE401E00709FDF /* SwiftyJSON.swift */,
+				3157EE641AB2E16D0025A7E2 /* SwiftyJSON.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -181,6 +181,7 @@
 				TargetAttributes = {
 					313D1B9D1AAE3F1400D564D1 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = WEZMQH4X5P;
 					};
 					313D1BB21AAE3F1400D564D1 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -233,9 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3115AF001AB2C8F7005441C7 /* RestClient.swift in Sources */,
-				31E933611AAE401E00709FDF /* SwiftyJSON.swift in Sources */,
 				313D1BA61AAE3F1400D564D1 /* ViewController.swift in Sources */,
 				311E3E001AB241B800E449E1 /* MovieCell.swift in Sources */,
+				3157EE651AB2E16D0025A7E2 /* SwiftyJSON.swift in Sources */,
 				313D1BA41AAE3F1400D564D1 /* AppDelegate.swift in Sources */,
 				311E3E021AB2420500E449E1 /* Movie.swift in Sources */,
 			);
@@ -362,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Moviebuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -372,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Moviebuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

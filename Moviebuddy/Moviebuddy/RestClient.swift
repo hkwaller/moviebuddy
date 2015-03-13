@@ -36,7 +36,7 @@ func authenticate(completionHandler: (callback: String) -> ()) {
             println(error)
         } else {
             if let parseJSON = json {
-                token = parseJSON["token"] as! String
+                token = parseJSON["token"] as String
             }
         }
         completionHandler(callback: token)
@@ -67,10 +67,10 @@ func fetchMovies(completionHandler: (callback: [Movie]) -> (), token: NSString) 
             if let dict = jsonResult as? NSArray {
                 for movie : AnyObject in dict {
                     if let movieInfo = movie as? Dictionary<String, AnyObject> {
-                        if let title = movieInfo["title"] as AnyObject? as! String? {
-                            if let director = movieInfo["director"] as AnyObject? as! String? {
-                                if let rating = movieInfo["rating"] as AnyObject? as! String? {
-                                    if let poster = movieInfo["poster"] as AnyObject? as! String? {
+                        if let title = movieInfo["title"] as AnyObject? as String? {
+                            if let director = movieInfo["director"] as AnyObject? as String? {
+                                if let rating = movieInfo["rating"] as AnyObject? as String? {
+                                    if let poster = movieInfo["poster"] as AnyObject? as String? {
                                         movies.append(Movie(title: title, director: director, rating: rating, poster: poster))
                                     }
                                 }

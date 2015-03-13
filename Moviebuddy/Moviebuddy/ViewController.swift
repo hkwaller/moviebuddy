@@ -80,14 +80,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
         var label : UILabel = UILabel()
-        label.text = "Movies"
+        label.text = "\tMovies"
         label.backgroundColor = UIColor(r: 245, g: 245, b: 245)
         
         return label
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:MovieCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as! MovieCell
+        var cell:MovieCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as MovieCell
         
         cell.director.text = self.movies[indexPath.row].director
         cell.title.text = self.movies[indexPath.row].title
