@@ -10,7 +10,6 @@
 		3115AF001AB2C8F7005441C7 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115AEFF1AB2C8F7005441C7 /* RestClient.swift */; };
 		311E3E001AB241B800E449E1 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E3DFF1AB241B800E449E1 /* MovieCell.swift */; };
 		311E3E021AB2420500E449E1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E3E011AB2420500E449E1 /* Movie.swift */; };
-		311E3E081AB2433900E449E1 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E3E071AB2433900E449E1 /* WebSocket.swift */; };
 		313D1BA41AAE3F1400D564D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D1BA31AAE3F1400D564D1 /* AppDelegate.swift */; };
 		313D1BA61AAE3F1400D564D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D1BA51AAE3F1400D564D1 /* ViewController.swift */; };
 		313D1BA91AAE3F1400D564D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 313D1BA71AAE3F1400D564D1 /* Main.storyboard */; };
@@ -34,7 +33,6 @@
 		3115AEFF1AB2C8F7005441C7 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		311E3DFF1AB241B800E449E1 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		311E3E011AB2420500E449E1 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		311E3E071AB2433900E449E1 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		313D1B9E1AAE3F1400D564D1 /* Moviebuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviebuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		313D1BA21AAE3F1400D564D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		313D1BA31AAE3F1400D564D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				31E933601AAE401E00709FDF /* SwiftyJSON.swift */,
-				311E3E071AB2433900E449E1 /* WebSocket.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -241,7 +238,6 @@
 				311E3E001AB241B800E449E1 /* MovieCell.swift in Sources */,
 				313D1BA41AAE3F1400D564D1 /* AppDelegate.swift in Sources */,
 				311E3E021AB2420500E449E1 /* Movie.swift in Sources */,
-				311E3E081AB2433900E449E1 /* WebSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
