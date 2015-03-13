@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Moviebuddy/ViewController.swift"
-            timestampString = "447943786.156189"
+            timestampString = "447944769.307308"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "deleteMovie(_:)"
             landmarkType = "5">
          </BreakpointContent>
