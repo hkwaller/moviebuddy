@@ -12,6 +12,6 @@ module.exports.authenticate = function(req, res) {
         email: 'hkwaller@gmail.com'
     };
 
-    var token = jwt.sign(user, secret, { expiresInMinutes: 60*5 });
+    var token = jwt.sign(user, secret, {});
     res.json({ token: token });
 }
