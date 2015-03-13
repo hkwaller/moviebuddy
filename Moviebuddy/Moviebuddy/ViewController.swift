@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension UIColor {
     
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
@@ -36,18 +35,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
-        tableView.layoutMargins = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
-        var tblView = UIView(frame: CGRectZero)
-        tableView.tableFooterView = tblView
-        tableView.tableFooterView?.hidden = true
-        tableView.backgroundColor = UIColor(r: 208, g: 204, b: 204)
-        
-        tableView.sectionHeaderHeight = 35
-        tableView.sectionIndexBackgroundColor = UIColor(r: 245, g: 245, b: 245)
-        tableView.sectionIndexColor = UIColor.whiteColor()
+        setupTableView()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,6 +50,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.tableView.reloadData()
             })
         }, token)
+    }
+    
+    func setupTableView() {
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        tableView.layoutMargins = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        var tblView = UIView(frame: CGRectZero)
+        tableView.tableFooterView = tblView
+        tableView.tableFooterView?.hidden = true
+        tableView.backgroundColor = UIColor(r: 208, g: 204, b: 204)
+        
+        tableView.sectionHeaderHeight = 35
+        tableView.sectionIndexBackgroundColor = UIColor(r: 245, g: 245, b: 245)
+        tableView.sectionIndexColor = UIColor.whiteColor()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
