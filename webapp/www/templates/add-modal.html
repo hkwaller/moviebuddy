@@ -1,0 +1,31 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Legg til film</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Tittel</span>
+            <input type="text" placeholder="Tittel" ng-model="newMovie.title">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Regissør</span>
+            <input type="text" placeholder="Regissør" ng-model="newMovie.director">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Rating (avgrens med punktum)</span>
+            <input type="text" placeholder="Rating" ng-model="newMovie.rating">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Poster URL</span>
+            <input type="text" placeholder="Poster URL" ng-model="newMovie.poster">
+          </label>
+          <label class="item">
+            <button class="button button-block button-positive" ng-click="add(newMovie)">Legg til</button>
+          </label>
+         <label class="item">
+            <button class="button button-block button-balanced" ng-click="add()">Legg til random film</button>
+          </label>
+        </div>
+    </ion-content>
+  </ion-modal-view>
