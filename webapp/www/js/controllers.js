@@ -2,9 +2,11 @@ app.controller('MainCtrl', function($scope, $resource, $http, $window, $ionicMod
     
     var Movie = $resource('http://localhost:3000/api/movies');
     
-    $http.post('/authenticate', {username: "hannes", password: "password"})
+    $http.post('http://localhost:3000/authenticate', {username: "hannes", password: "password"})
       .success(function (data, status, headers, config) {
         $window.sessionStorage.token = data.token;
+        getMovies();
+
       })
       .error(function (data, status, headers, config) {
         delete $window.sessionStorage.token;
@@ -16,7 +18,6 @@ app.controller('MainCtrl', function($scope, $resource, $http, $window, $ionicMod
         });
     }
     
-    getMovies();
     
     $scope.refresh = function() {
         getMovies();

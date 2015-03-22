@@ -42,14 +42,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(animated: Bool) {
         authenticate { (callback) -> () in
             self.token = callback as NSString
+            fetchMovies({ (callback) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.movies = callback
+                    self.tableView.reloadData()
+                })
+                }, self.token)
         }
-
-        fetchMovies({ (callback) -> () in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.movies = callback
-                self.tableView.reloadData()
-            })
-        }, token)
+        
     }
     
     // MARK: Websocket Delegate Methods.

@@ -16,6 +16,7 @@ var app = angular.module('moviebuddy', ['ionic', 'ngResource', 'ngAnimate', 'toa
       StatusBar.styleDefault();
     }
   });
+    
 })
 
 .config(function ($httpProvider) {
